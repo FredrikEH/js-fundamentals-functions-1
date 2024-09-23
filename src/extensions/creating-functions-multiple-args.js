@@ -9,6 +9,13 @@
 // -1, 1        | [-1, 0, 1]
 //
 // TODO: write code below
+function between(one, two){
+  let array = []
+  for(let i = one; i <= two; i++){
+    array.push(i)
+  }
+  return array
+}
 
 // 2. define a function that takes two arguments: a string and a number.
 // The function should return the same string but in upper case with exclamation
@@ -21,6 +28,14 @@
 // error, 10    | ERROR!!!!!!!!!!
 //
 // TODO: write code below
+function shout(word, amount){
+  let result = ''
+  result += word.toUpperCase()
+  for(let i = 0; i < amount; i++){
+    result += '!'
+  }
+  return result
+}
 
 // 3. define a function that takes two arguments: a string and a number.
 // The function should return the new time in 24hr time after adding the additional time in minutes.
@@ -33,10 +48,23 @@
 // '12:50', 120 | '14:50'
 // '23:50', 30  | '00:20'
 // TODO: write code below
+function clock(time, extra){
+  let array = time.split(':')
+  let total = parseInt(array[0]) * 60 + parseInt(array[1]) + extra
+  let hour = Math.floor(total / 60)
+  let minute = '' + total % 60
+  if(hour === 24){
+    hour = '00'
+  }
+  if(minute.length === 1){
+    minute = '0' + minute
+  }
+  return hour + ':' + minute 
+}
 
 // TODO: change the exported value to be the name of the function you defined
 module.exports = {
-  a: undefined, // 1. change undefined to be the name of the function defined to create the range of numbers (the first todo)
-  b: undefined, // 2. change undefined to be the name of the function defined to return the string with exclamations (the second todo)
-  c: undefined // etc
+  a: between, // 1. change undefined to be the name of the function defined to create the range of numbers (the first todo)
+  b: shout, // 2. change undefined to be the name of the function defined to return the string with exclamations (the second todo)
+  c: clock // etc
 }
